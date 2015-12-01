@@ -40,17 +40,18 @@
 		<form method="post" action="search_disply.php">
 			<div class="tabber">
 			     <div class="tabbertab" title="Devices">
-				  <input type="checkbox" name="devices_check[]" value="device.service">
+				  <input type="checkbox" name="devices_check[]" value="device.devid">
 				  Service
 				  <input type="text" name="devices_input[]">
 
 				  <br/>
 
-				  <input type="checkbox" name="devices_check[]" value="device.type">
+				  <input type="checkbox" name="devices_check[]" value="device.devid">
 				  Type
 				  <select name="devices_input[]">                      
 					  <option value=""></option>
-					  <option value="Server enclosure">Server Enclosure</option>
+					  <option value="Server">Server</option>
+					  <option value="Enclosure">Enclosure</option>
 					  <option value="Switch">Switch</option>
 				  </select>
 			     </div>
@@ -68,7 +69,7 @@
 
 				  <br/>
 
-				  <input type="checkbox" name="memory_check[]" value="memory.count">
+				  <input type="checkbox" name="memory_check[]" value="memory.stickcount">
 				  Stick Count
 				  <input type="text" name="memory_input[]">
 
@@ -95,19 +96,19 @@
 
 				  <br/>
 
-				  <input type="checkbox" name="processors_check[]" value="processor.core">
+				  <input type="checkbox" name="processors_check[]" value="processor.corecount">
 				  Core count
 				  <input type="text" name="processors_input[]">
 
 				  <br/>
 
-				  <input type="checkbox" name="processors_check[]" value="processor.thread">
+				  <input type="checkbox" name="processors_check[]" value="processor.threadcount">
 				  Thread count
 				  <input type="text" name="processors_input[]">
 			     </div>
 
 			     <div class="tabbertab" title="Expantion Cards">
-				  <input type="checkbox" name="cards_check[]" value="card.family">
+				  <input type="checkbox" name="cards_check[]" value="card.type">
 				  Type
 				  <select name="cards_input[]">                      
 					  <option value=""></option>
@@ -127,7 +128,7 @@
 
 				  <br/>
 
-				  <input type="checkbox" name="employee_check[]" value="employee.cubical">
+				  <input type="checkbox" name="employee_check[]" value="employee.cubicle">
 				  Cubical
 				  <input type="text" name="employees_input[]">
 			     </div>
@@ -145,7 +146,7 @@
 			     </div>
 
 			     <div class="tabbertab" title="Projects">
-				  <input type="checkbox" name="locations_check[]" value="project.date">
+				  <input type="checkbox" name="locations_check[]" value="project.deadline">
 				  Date
 				  <input type="text" name="locations_input[]" id="datepicker">
 			     </div>
@@ -165,7 +166,7 @@
 
 				  <br/>
 
-				  <input type="checkbox" name="locations_check[]" value="location.unit">
+				  <input type="checkbox" name="locations_check[]" value="location.topu">
 				  Top unit
 				  <select name="locations_input[]">                      
 					  <option value=""></option>
