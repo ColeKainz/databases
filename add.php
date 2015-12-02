@@ -67,7 +67,46 @@
 	//close the connection
 	oci_close($conn);
 
-	
+function options($flag)
+{
+	if($flag == "Employees")
+	{
+		$elength = count($employees);
+		for($a = 0; $a < $elength; $a++)
+		{
+			echo '<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>';
+		}
+	}
+	else if($flag == "Processors")
+	{
+		$clength = count($cpus);
+		for($a = 0; $a < $clength; $a++)
+		{
+			echo '<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>';
+		}
+	}
+	else if($flag == "Memories")
+	{
+		$rlength = count($rams);
+		for($a = 0; $a < $clength; $a++)
+		{
+			echo '<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>';
+		}
+	}
+	else if($flag == "Cards")
+	{
+		foreach($cards as $car)
+		{
+			echo '<option value="' . $car . '">' . $car . '</option>';
+		}
+	}
+	else
+	{
+		echo "An error has occured";
+	}
+}
+
+?>
 		<head>
 
 			<script type="text/javascript" src="tabber.js"></script>
@@ -99,37 +138,22 @@
 				<br/><br/>
 				Employee: 
 					<select name="Employees">
-						$elength = count($employees);
-						for(int $a = 0; $a < $elength; $a++)
-						{
-							echo '<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>';
-						}
+						<?php options("Employees");?>
 					</select>
 				<br/><br/
 				Processor:
 					<select name="Processors">
-						$clength = count($cpus);
-						for(int $a = 0; $a < $clength; $a++)
-						{
-							echo '<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>';
-						}
+						<?php options("Processors");?>
 					</select>
 				<br/><br/>
 				Memory:
 					<select name="Memories">
-						$rlength = count($rams);
-						for(int $a = 0; $a < $clength; $a++)
-						{
-							echo '<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>';
-						}
+						<?php options("Memories");?>
 					</select>
 				<br/><br/>
 				Expansion Card:
 					<select name="Cards">
-						foreach($cards as $car)
-						{
-							echo '<option value="' . $car . '">' . $car . '</option>';
-						}
+						<?php options("Cards");?>
 					</select>
 				<br/><br/>
 				Location: <input type="text" name="locid">
@@ -140,7 +164,5 @@
 			</form>
 
 		</body>
-
-	?>
 
 </html>
