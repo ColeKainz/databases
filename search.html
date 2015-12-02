@@ -24,7 +24,7 @@
 
 		<script>
 		$(function() {
-		  $( "#datepicker" ).datepicker();
+		  $( "#datepicker" ).datepicker({ dateFormat: 'yymmdd' });
 		});
 		</script>
 	</head>
@@ -148,6 +148,13 @@
 			     <div class="tabbertab" title="Projects">
 				  <input type="checkbox" name="locations_check[]" value="project.date">
 				  Date
+				  <input type="dropdown" name="locations_comp">
+					<option value="<"><</option>
+					<option value=">">></option>
+					<option value="<="><=</option>
+					<option value=">=">>=</option>
+					<option value="=">=</option>
+					<option value="!=">!=</option>
 				  <input type="text" name="locations_input[]" id="datepicker">
 			     </div>
 
