@@ -18,7 +18,8 @@
 			  <li><a href="add.html">Ad</a></li>
 			</ul> 
 		</div>
-
+		<br/>
+		<br/>
 		<table style = "width:100%">
 <?php
 
@@ -170,14 +171,6 @@
 			$from_employee = true;
 		    }
 	}
-	$employees_cubicle = $_POST['employees_cubicle'];
-	if($employees_cubicle != ""){
-		$where = $where . 'employees.cubicle=\'' . $employees_cubicle . '\',';
-		    if(!$from_employee) {
-			$from = $from . 'employee,';
-			$from_employee = true;
-		    }
-	}
 
 	$from_location = false;
 	if(!empty($_POST['locations_check'])) {
@@ -232,7 +225,6 @@
 	$where = rtrim($where, ",");
 
 	$query = $select . $from . $where;
-	echo $query;
 	$stid = oci_parse($conn,$query);
 	oci_execute($stid,OCI_DEFAULT);
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
