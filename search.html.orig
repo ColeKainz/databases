@@ -24,7 +24,7 @@
 
 		<script>
 		$(function() {
-		  $( "#datepicker" ).datepicker({ dateFormat: 'yymmdd' });
+		  $( "#datepicker" ).datepicker();
 		});
 		</script>
 	</head>
@@ -40,8 +40,13 @@
 		<form method="post" action="search_display.php">
 			<div class="tabber">
 			     <div class="tabbertab" title="Devices">
+<<<<<<< HEAD
 				  <input type="checkbox" name="devices_check[]" value="device.service">
 				  Service tab
+=======
+				  <input type="checkbox" name="devices_check[]" value="device.devid">
+				  Service
+>>>>>>> 0b13dc1d311a91ac5e3d71e45025030863510553
 				  <input type="text" name="devices_input[]">
 
 				  <br/>
@@ -128,7 +133,7 @@
 
 				  <br/>
 
-				  <input type="checkbox" name="employee_check[]" value="employee.cubical">
+				  <input type="checkbox" name="employee_check[]" value="employee.cubicle">
 				  Cubical
 				  <input type="text" name="employees_input[]">
 			     </div>
@@ -146,15 +151,8 @@
 			     </div>
 
 			     <div class="tabbertab" title="Projects">
-				  <input type="checkbox" name="locations_check[]" value="project.date">
+				  <input type="checkbox" name="locations_check[]" value="project.deadline">
 				  Date
-				  <input type="dropdown" name="locations_comp">
-					<option value="<"><</option>
-					<option value=">">></option>
-					<option value="<="><=</option>
-					<option value=">=">>=</option>
-					<option value="=">=</option>
-					<option value="!=">!=</option>
 				  <input type="text" name="locations_input[]" id="datepicker">
 			     </div>
 
@@ -173,7 +171,7 @@
 
 				  <br/>
 
-				  <input type="checkbox" name="locations_check[]" value="location.unit">
+				  <input type="checkbox" name="locations_check[]" value="location.topu">
 				  Top unit
 				  <select name="locations_input[]">                      
 					  <option value=""></option>
