@@ -74,6 +74,7 @@ function options($flag)
 		$elength = count($employees);
 		for($a = 0; $a < $elength; $a++)
 		{
+			//Something wrong with echo statements.
 			echo '<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>';
 		}
 	}
