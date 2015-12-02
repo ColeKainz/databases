@@ -42,13 +42,13 @@
 			     <div class="tabbertab" title="Devices">
 				  <input type="checkbox" name="devices_check[]" value="device.service">
 				  Service tab
-				  <input type="text" name="devices_input[]">
+				  <input type="text" name="devices_service">
 
 				  <br/>
 
-				  <input type="checkbox" name="devices_check[]" value="device.devid">
+				  <input type="checkbox" name="devices_check[]" value="device.typid">
 				  Type
-				  <select name="devices_input[]">                      
+				  <select name="devices_typid">                      
 					  <option value=""></option>
 					  <option value="Server">Server</option>
 					  <option value="Enclosure">Enclosure</option>
@@ -59,19 +59,19 @@
 			     <div class="tabbertab" title="Memory">
 				  <input type="checkbox" name="memory_check[]" value="memory.frequency">
 				  Frequency
-				  <input type="text" name="memory_input[]">
+				  <input type="text" name="memory_frequency">
 
 				  <br/>
 
 				  <input type="checkbox" name="memory_check[]" value="memory.capacity">
 				  Capacity
-				  <input type="text" name="memory_input[]">
+				  <input type="text" name="memory_capacity">
 
 				  <br/>
 
 				  <input type="checkbox" name="memory_check[]" value="memory.stickcount">
 				  Stick Count
-				  <input type="text" name="memory_input[]">
+				  <input type="text" name="memory_stickcount">
 
 				  <br/>
 			     </div>
@@ -79,11 +79,11 @@
 	 		     <div class="tabbertab" title="Processors">
 				  <input type="checkbox" name="processors_check[]" value="processor.family">
 				  Family
-				  <select name="processors_input[]">                      
+				  <select name="processors_family">                      
 					  <option value=""></option>
-					  <option value="i3">i3</option>
-					  <option value="i5">i5</option>
-					  <option value="i7">i7</option>
+					  <option value="Core i3">Core i3</option>
+					  <option value="Core i5">Core i5</option>
+					  <option value="Core i7">Core i7</option>
 					  <option value="Xeon e3">Xeon e3</option>
 					  <option value="Xeon e5">Xeon e5</option>
 				  </select>
@@ -92,25 +92,25 @@
 
 				  <input type="checkbox" name="processors_check[]" value="processor.frequency">
 				  Frequency
-				  <input type="text" name="processors_input[]">
+				  <input type="text" name="processors_frequency">
 
 				  <br/>
 
 				  <input type="checkbox" name="processors_check[]" value="processor.corecount">
 				  Core count
-				  <input type="text" name="processors_input[]">
+				  <input type="text" name="processors_corecount">
 
 				  <br/>
 
 				  <input type="checkbox" name="processors_check[]" value="processor.threadcount">
 				  Thread count
-				  <input type="text" name="processors_input[]">
+				  <input type="text" name="processors_threadcount">
 			     </div>
 
 			     <div class="tabbertab" title="Expantion Cards">
 				  <input type="checkbox" name="cards_check[]" value="card.type">
 				  Type
-				  <select name="cards_input[]">                      
+				  <select name="cards_type">                      
 					  <option value=""></option>
 					  <option value="SAS 6">SAS 6</option>
 					  <option value="SAS 12">SAS 12</option>
@@ -124,58 +124,35 @@
 			     <div class="tabbertab" title="Employees">
 				  <input type="checkbox" name="employee_check[]" value="employee.email">
 				  Email
-				  <input type="text" name="employees_input[]">
+				  <input type="text" name="employees_email">
 
 				  <br/>
 
-				  <input type="checkbox" name="employee_check[]" value="employee.cubical">
+				  <input type="checkbox" name="employee_check[]" value="employee.cubicle">
 				  Cubical
-				  <input type="text" name="employees_input[]">
-			     </div>
-
-			     <div class="tabbertab" title="Managers">
-				  <input type="checkbox" name="managers_check[]" value="manager.email">
-				  Email
-				  <input type="text" name="managers_input[]">
-
-				  <br/>
-
-				  <input type="checkbox" name="managers_check[]" value="manager.office">
-				  Office
-				  <input type="text" name="managers_input[]">
-			     </div>
-
-			     <div class="tabbertab" title="Projects">
-				  <input type="checkbox" name="locations_check[]" value="project.date">
-				  Date
-				  <input type="dropdown" name="locations_comp">
-					<option value="<"><</option>
-					<option value=">">></option>
-					<option value="<="><=</option>
-					<option value=">=">>=</option>
-					<option value="=">=</option>
-					<option value="!=">!=</option>
-				  <input type="text" name="locations_input[]" id="datepicker">
+				  <input type="text" name="employees_cubicle">
 			     </div>
 
 	 		     <div class="tabbertab" title="Locations">
 				  <input type="checkbox" name="locations_check[]" value="location.building">
 				  Building
-				  <select name="locations_input[]">                      
-					  <option value=""></option>
+				  <select name="locations_building">      
+					  <option value=""></option>                
+					  <option value="7615">7615</option>
+					  <option value="7625">7625</option>
 				  </select>
 
 				  <br/>
 
 				  <input type="checkbox" name="locations_check[]" value="location.rack">
 				  Rack
-				  <input type="text" name="locations_input[]">
+				  <input type="text" name="locations_rack">
 
 				  <br/>
 
 				  <input type="checkbox" name="locations_check[]" value="location.unit">
 				  Top unit
-				  <select name="locations_input[]">                      
+				  <select name="locations_unit">                      
 					  <option value=""></option>
 					  <option value="1">1</option>
 					  <option value="2">2</option>
@@ -225,7 +202,7 @@
 
 				  <input type="checkbox" name="locations_check[]" value="location.form">
 				  Form factor
-				  <input type="text" name="locations_input[]">
+				  <input type="text" name="locations_form">
 			     </div>
 			</div>
 			<input type="submit">
