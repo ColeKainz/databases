@@ -7,7 +7,7 @@
 
 
 
-	$statement = $insert . $value . ');';
+	$query = $insert . $value . ');';
 
 	$stid = oci_parse($conn,$query);
 	oci_execute($stid,OCI_DEFAULT);

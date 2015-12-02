@@ -1,7 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+
 <?php
 
-	<!DOCTYPE HTML>
-	<html>
+	$employees[];
+	$cpus[];
+	$rams[];
+	$cards[];
+	
+	$conn = oci_connect('username', 'password', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+	
+	$query = "SELECT  FROM ";
+
+	$stid = oci_parse($conn,$query);
+	oci_execute($stid,OCI_DEFAULT);
+	oci_free_statement($stid);	
+	oci_close($conn);
+
+	
 		<head>
 
 			<script type="text/javascript" src="tabber.js"></script>
@@ -29,15 +45,39 @@
 			<form method="post" action="add_data.php">
 				SOOOO, You wish to add a Device?
 				<br/><br/>
-				Service tag: Employee: <input type="text" name="devid">
+				Service tag: <input type="text" name="devid"> 
 				<br/><br/>
-				Employee: <input type="text" name="empid">
+				Employee: 
+					<select name="Employees">
+						foreach($emp as $employees)
+						{
+							echo '<option value="' . $emp . '">' . $emp . '</option>';
+						}
+					</select>
+				<br/><br/
+				Processor:
+					<select name="Processors">
+						foreach($cpu as $cpus)
+						{
+							echo '<option value="' . $cpu . '">' . $cpu . '</option>';
+						}
+					</select>
 				<br/><br/>
-				Processor: <input type="text" name="cpuid"> 
+				Memory:
+					<select name="Memories">
+						foreach($ram as $rams)
+						{
+							echo '<option value="' . $ram . '">' . $ram . '</option>';
+						}
+					</select>
 				<br/><br/>
-				Memory: <input type="text" name="memid">
-				<br/><br/>
-				Expansion Card: <input type="text" name="carid">
+				Expansion Card:
+					<select name="Cards">
+						foreach($car as $cards)
+						{
+							echo '<option value="' . $car . '">' . $car . '</option>';
+						}
+					</select>
 				<br/><br/>
 				Location: <input type="text" name="locid">
 				<br/><br/>
@@ -47,6 +87,7 @@
 			</form>
 
 		</body>
-	</html>
 
-?>
+	?>
+
+</html>
