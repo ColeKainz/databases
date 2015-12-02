@@ -4,6 +4,7 @@
 <?php
 
 	$employees[];
+	$employeeids[];
 	$cpus[];
 	$rams[];
 	$cards[];
@@ -11,13 +12,14 @@
 	$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 	
 	//Grab Employees
-	$query = "SELECT fname, lname FROM  Employee";
+	$query = "SELECT empid, fname, lname FROM  Employee";
 	$stid = oci_parse($conn,$query);
 	oci_execute($stid,OCI_DEFAULT);
 	$i = 0
 	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 	{
-	    $employees[$i] = $row[0] . " " . $row[1];
+	    $employees[$i] = $row[1] . " " . $row[2];
+	    $employeeids[$i] = $row[0];
 	    $i = $i + 1;
 	}
 	oci_free_statement($stid);
@@ -81,8 +83,8 @@
 		<body>
 			<div id="nav-bar">
 				<ul>
-				  <li><a href="search.html">Surch</a></li>
-				  <li><a href="add.html">Ad</a></li>
+				  <li><a href="search.html">Search</a></li>
+				  <li><a href="add.html">Add</a></li>
 				</ul> 
 			</div>
 
@@ -93,9 +95,10 @@
 				<br/><br/>
 				Employee: 
 					<select name="Employees">
-						foreach($employees as $emp)
+						$elength = count($employees);
+						for(int $a = 0; $a < $elength; $a++)
 						{
-							echo '<option value="' . $emp . '">' . $emp . '</option>';
+							echo '<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>';
 						}
 					</select>
 				<br/><br/

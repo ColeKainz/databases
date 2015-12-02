@@ -3,9 +3,8 @@
 	$conn = oci_connect('username', 'password', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 
 	$insert = 'INSERT INTO Device';
-	$value = 'VALUES (';
-
-
+	$value = "VALUES ('" . $_POST['devid'] . "', '" . $_POST['Employees'] . "', '" . $_POST['Processors'] . "', '" . 
+		$_POST['Memories'] . "', '" . $_POST['Cards'] . "', '" . $_POST['locid'] . "', '" . $_POST['typid'];
 
 	$query = $insert . $value . ');';
 
