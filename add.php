@@ -119,7 +119,7 @@ function options($flag)
 			   on the page as plain HTML. After tabber runs, the class is changed
 			   to "tabberlive" and it will appear. */
 
-			document.write('<style type="text/css">.tabber{display:none;}<\/style>');
+			document.write('<style type="text/css">.tabber{display:none;}</style>');
 			</script>
 		</head>
 
@@ -138,22 +138,22 @@ function options($flag)
 				<br/><br/>
 				Employee: 
 					<select name="Employees">
-						<?php options("Employees");?>
+						<?php options("Employees"); ?>
 					</select>
 				<br/><br/
 				Processor:
 					<select name="Processors">
-						<?php options("Processors");?>
+						<?php options("Processors"); ?>
 					</select>
 				<br/><br/>
 				Memory:
 					<select name="Memories">
-						<?php options("Memories");?>
+						<?php options("Memories"); ?>
 					</select>
 				<br/><br/>
 				Expansion Card:
 					<select name="Cards">
-						<?php options("Cards");?>
+						<?php options("Cards"); ?>
 					</select>
 				<br/><br/>
 				Location: <input type="text" name="locid">
