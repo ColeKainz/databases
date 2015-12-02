@@ -6,7 +6,9 @@
 	$employees[];
 	$employeeids[];
 	$cpus[];
+	$cpuids[];
 	$rams[];
+	$ramids[];
 	$cards[];
 	
 	$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
@@ -15,7 +17,7 @@
 	$query = "SELECT empid, fname, lname FROM  Employee";
 	$stid = oci_parse($conn,$query);
 	oci_execute($stid,OCI_DEFAULT);
-	$i = 0
+	$i = 0;
 	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 	{
 	    $employees[$i] = $row[1] . " " . $row[2];
@@ -28,22 +30,24 @@
 	$query = "SELECT family, model FROM Processor";
 	$stid = oci_parse($conn,$query);
 	oci_execute($stid,OCI_DEFAULT);
-	$i = 0
+	$i = 0;
 	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 	{
-	    $cpus[$i] = $row[0] . " - " . $row[1];
+	    $cpus[$i] = $row[0];
+	    $cpuids[$i] = $row[1];
 	    $i = $i + 1;
 	}
 	oci_free_statement($stid);
 
 	//Grab RAM
-	$query = "SELECT capacity, frequency FROM Memory";
+	$query = "SELECT memid, capacity, frequency FROM Memory";
 	$stid = oci_parse($conn,$query);
 	oci_execute($stid,OCI_DEFAULT);
-	$i = 0
+	$i = 0;
 	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 	{
-	    $rams[$i] = $row[0] . "GB - " . $row[1] . "Mhz";
+	    $rams[$i] = $row[1] . "GB - " . $row[2] . "Mhz";
+	    $ramids[$i] = $row[0];
 	    $i = $i + 1;
 	}
 	oci_free_statement($stid);
@@ -52,7 +56,7 @@
 	$query = "SELECT model FROM Expansioncard";
 	$stid = oci_parse($conn,$query);
 	oci_execute($stid,OCI_DEFAULT);
-	$i = 0
+	$i = 0;
 	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 	{
 	    $cards[$i] = $row[0];
@@ -104,17 +108,19 @@
 				<br/><br/
 				Processor:
 					<select name="Processors">
-						foreach($cpus as $cpu)
+						$clength = count($cpus);
+						for(int $a = 0; $a < $clength; $a++)
 						{
-							echo '<option value="' . $cpu . '">' . $cpu . '</option>';
+							echo '<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>';
 						}
 					</select>
 				<br/><br/>
 				Memory:
 					<select name="Memories">
-						foreach($rams as $ram)
+						$rlength = count($rams);
+						for(int $a = 0; $a < $clength; $a++)
 						{
-							echo '<option value="' . $ram . '">' . $ram . '</option>';
+							echo '<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>';
 						}
 					</select>
 				<br/><br/>
