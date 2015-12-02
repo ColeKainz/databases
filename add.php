@@ -3,13 +3,13 @@
 
 <?php
 
-	$employees[];
-	$employeeids[];
-	$cpus[];
-	$cpuids[];
-	$rams[];
-	$ramids[];
-	$cards[];
+	$employees = array();
+	$employeeids = array();
+	$cpus = array();
+	$cpuids = array();
+	$rams = array();
+	$ramids = array();
+	$cards = array();
 	
 	$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 	
