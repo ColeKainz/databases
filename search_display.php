@@ -19,6 +19,22 @@
 	    }
 	}
 
+	$device_input = $_POST['devices_input[]'];
+	if(trim(device_input[0]) != ""){
+		$where = $where . 'device.service=' . trim(device_input[0]) . ',';
+		if(!$from_device) {
+			$from = $from . 'device,';
+			$from_device = true;
+		}
+	}
+	if(device_input[1] != ""){
+		$where = $where . 'device.devid=' . device_input[1] . ',';
+		if(!$from_device) {
+			$from = $from . 'device,';
+			$from_device = true;
+		}
+	}
+
 	$from_memory = false;
 	if(!empty($_POST['memory_check'])) {
 	    foreach($_POST['memory_check'] as $check) {
