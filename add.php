@@ -3,74 +3,29 @@
 
 <?php
 
-	$employees = array();
-	$employeeids = array();
-	$cpus = array();
-	$cpuids = array();
-	$rams = array();
-	$ramids = array();
-	$cards = array();
-	
-	$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-	
-	//Grab Employees
-	$query = "SELECT empid, fname, lname FROM  Employee";
-	$stid = oci_parse($conn,$query);
-	oci_execute($stid,OCI_DEFAULT);
-	$i = 0;
-	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
-	{
-	    $employees[$i] = $row[1] . " " . $row[2];
-	    $employeeids[$i] = $row[0];
-	    $i = $i + 1;
-	}
-	oci_free_statement($stid);
-
-	//Grab Processors
-	$query = "SELECT family, model FROM Processor";
-	$stid = oci_parse($conn,$query);
-	oci_execute($stid,OCI_DEFAULT);
-	$i = 0;
-	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
-	{
-	    $cpus[$i] = $row[0];
-	    $cpuids[$i] = $row[1];
-	    $i = $i + 1;
-	}
-	oci_free_statement($stid);
-
-	//Grab RAM
-	$query = "SELECT memid, capacity, frequency FROM Memory";
-	$stid = oci_parse($conn,$query);
-	oci_execute($stid,OCI_DEFAULT);
-	$i = 0;
-	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
-	{
-	    $rams[$i] = $row[1] . "GB - " . $row[2] . "Mhz";
-	    $ramids[$i] = $row[0];
-	    $i = $i + 1;
-	}
-	oci_free_statement($stid);
-
-	//Grab Expansion Cards
-	$query = "SELECT model FROM Expansioncard";
-	$stid = oci_parse($conn,$query);
-	oci_execute($stid,OCI_DEFAULT);
-	$i = 0;
-	while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
-	{
-	    $cards[$i] = $row[0];
-	    $i = $i + 1;
-	}
-	oci_free_statement($stid);
-
-	//close the connection
-	oci_close($conn);
-
 function options($flag)
 {
-	if($flag == "Employees")
+	if($flag == "e")
 	{
+		$employees = array();
+		$employeeids = array();
+
+
+		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+		$query = "SELECT empid, fname, lname FROM  Employee";
+		$stid = oci_parse($conn,$query);
+		oci_execute($stid,OCI_DEFAULT);
+		$i = 0;
+		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
+		{
+		    $employees[$i] = $row[1] . " " . $row[2];
+		    $employeeids[$i] = $row[0];
+		    $i = $i + 1;
+		}
+		oci_free_statement($stid);
+		oci_close($conn);
+
+
 		$elength = count($employees);
 		for($a = 0; $a < $elength; $a++)
 		{
@@ -78,24 +33,79 @@ function options($flag)
 			echo '<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>';
 		}
 	}
-	else if($flag == "Processors")
+	else if($flag == "p")
 	{
+		$cpus = array();
+		$cpuids = array();
+
+
+		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+		$query = "SELECT family, model FROM Processor";
+		$stid = oci_parse($conn,$query);
+		oci_execute($stid,OCI_DEFAULT);
+		$i = 0;
+		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
+		{
+		    $cpus[$i] = $row[0];
+		    $cpuids[$i] = $row[1];
+		    $i = $i + 1;
+		}
+		oci_free_statement($stid);
+		oci_close($conn);
+
+
 		$clength = count($cpus);
 		for($a = 0; $a < $clength; $a++)
 		{
 			echo '<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>';
 		}
 	}
-	else if($flag == "Memories")
+	else if($flag == "m")
 	{
+		$rams = array();
+		$ramids = array();
+
+
+		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+		$query = "SELECT memid, capacity, frequency FROM Memory";
+		$stid = oci_parse($conn,$query);
+		oci_execute($stid,OCI_DEFAULT);
+		$i = 0;
+		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
+		{
+		    $rams[$i] = $row[1] . "GB - " . $row[2] . "Mhz";
+		    $ramids[$i] = $row[0];
+		    $i = $i + 1;
+		}
+		oci_free_statement($stid);
+		oci_close($conn);
+
+
 		$rlength = count($rams);
 		for($a = 0; $a < $clength; $a++)
 		{
 			echo '<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>';
 		}
 	}
-	else if($flag == "Cards")
+	else if($flag == "c")
 	{
+		$cards = array();
+
+
+		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+		$query = "SELECT model FROM Expansioncard";
+		$stid = oci_parse($conn,$query);
+		oci_execute($stid,OCI_DEFAULT);
+		$i = 0;
+		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
+		{
+		    $cards[$i] = $row[0];
+		    $i = $i + 1;
+		}
+		oci_free_statement($stid);
+		oci_close($conn);
+
+
 		foreach($cards as $car)
 		{
 			echo '<option value="' . $car . '">' . $car . '</option>';
@@ -139,22 +149,22 @@ function options($flag)
 				<br/><br/>
 				Employee: 
 					<select name="Employees">
-						<?php options("Employees"); ?>
+						<?php options("e"); ?>
 					</select>
 				<br/><br/
 				Processor:
 					<select name="Processors">
-						<?php options("Processors"); ?>
+						<?php options("p"); ?>
 					</select>
 				<br/><br/>
 				Memory:
 					<select name="Memories">
-						<?php options("Memories"); ?>
+						<?php options("m"); ?>
 					</select>
 				<br/><br/>
 				Expansion Card:
 					<select name="Cards">
-						<?php options("Cards"); ?>
+						<?php options("c"); ?>
 					</select>
 				<br/><br/>
 				Location: <input type="text" name="locid">
