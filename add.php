@@ -7,12 +7,12 @@ function options($flag)
 {
 	if($flag == "e")
 	{
-		$employees = array();
-		$employeeids = array();
+		$es = array();
+		$eids = array();
 
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT * FROM  Employee";
+		$query = "SELECT empid, fname, lname FROM  Employee";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -23,17 +23,62 @@ function options($flag)
 			{
 				if($j == 0)
 				{
-					$employeeids[$i] = $item;
+					$eids[$i] = $item;
 					$j = $j + 1;
 				}
 				elseif($j == 1)
 				{
-					$employees[$i] = $item . " ";
+					$es[$i] = $item . " ";
 					$j = $j + 1;
 				}
 				elseif($j = 2)
 				{
-					$employees[$i] = $employees[$i] . $item;
+					$es[$i] = $es[$i] . $item;
+				}
+			}
+			$i++;
+		}
+
+		oci_free_statement($stid);
+		oci_close($conn);
+
+		$elength = count($es);
+		for($a = 0; $a < $elength; $a++)
+		{
+			//Something wrong with echo statements.
+			echo ('<option value="' . $eids[$a] . '">' . $es[$a] . "OOGA BOOGA" . '</option>');
+		}
+
+	}
+	else if($flag == "p")
+	{
+		$ps = array();
+		$pids = array();
+
+
+		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
+		$query = "SELECT * FROM  Processor";
+		$stid = oci_parse($conn,$query);
+		oci_execute($stid,OCI_DEFAULT);
+		$i = 0;
+		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
+		{
+			$j = 0;
+			foreach($row as $item)
+			{
+				if($j == 0)
+				{
+					$pids[$i] = $item;
+					$j = $j + 1;
+				}
+				elseif($j == 1)
+				{
+					$ps[$i] = $item . " ";
+					$j = $j + 1;
+				}
+				elseif($j = 2)
+				{
+					$ps[$i] = $ps[$i] . $item;
 					break 1;
 				}
 			}
@@ -44,38 +89,11 @@ function options($flag)
 		oci_close($conn);
 
 
-		$elength = count($employees);
-		for($a = 0; $a < $elength; $a++)
+		$plength = count($ps);
+		for($a = 0; $a < $plength; $a++)
 		{
 			//Something wrong with echo statements.
-			echo ('<option value="' . $employeeids[$a] . '">' . $employees[$a] . "OOGA BOOGA" . '</option>');
-		}
-	}
-	else if($flag == "p")
-	{
-		$cpus = array();
-		$cpuids = array();
-
-
-		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT * FROM Processor";
-		$stid = oci_parse($conn,$query);
-		oci_execute($stid,OCI_DEFAULT);
-		$i = 0;
-		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
-		{
-		    $cpus[$i] = $row['1'];
-		    $cpuids[$i] = $row['0'];
-		    $i = $i + 1;
-		}
-		oci_free_statement($stid);
-		oci_close($conn);
-
-
-		$clength = count($cpus);
-		for($a = 0; $a < $clength; $a++)
-		{
-			echo ('<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>');
+			echo ('<option value="' . $pids[$a] . '">' . $ps[$a] . "OOGA BOOGA" . '</option>');
 		}
 	}
 	else if($flag == "m")
