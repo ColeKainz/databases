@@ -180,7 +180,7 @@ function options($flag)
 			<div id="nav-bar">
 				<ul>
 				  <li><a href="search.html">Search</a></li>
-				  <li><a href="add.html">Add</a></li>
+				  <li><a href="add.php">Add</a></li>
 				</ul> 
 			</div>
 
