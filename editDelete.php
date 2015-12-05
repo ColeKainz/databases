@@ -65,7 +65,6 @@
 							   {
 							      echo '<td>' . $item . '</td>'; 
 							   }
-							   echo '<td><input type="submit" name="action" value="Edit"></td>';
 							   echo '<td><input type="submit" name="action" value="Delete"></td>';
 							   echo '</form></tr>';
 							}
@@ -94,7 +93,6 @@
 							   {
 							      echo '<td>' . $item . '</td>'; 
 							   }
-							   echo '<td><input type="submit" name="action" value="Edit"></td>';
 							   echo '<td><input type="submit" name="action" value="Delete"></td>';
 							   echo '</form></tr>';
 							}
@@ -123,7 +121,6 @@
 							   {
 							      echo '<td>' . $item . '</td>'; 
 							   }
-							   echo '<td><input type="submit" name="action" value="Edit"></td>';
 							   echo '<td><input type="submit" name="action" value="Delete"></td>';
 							   echo '</form></tr>';
 							}
@@ -152,7 +149,6 @@
 							   {
 							      echo '<td>' . $item . '</td>'; 
 							   }
-							   echo '<td><input type="submit" name="action" value="Edit"></td>';
 							   echo '<td><input type="submit" name="action" value="Delete"></td>';
 							   echo '</form></tr>';
 							}
