@@ -94,7 +94,7 @@ lname varchar(25),
 email varchar(25) NOT NULL,
 cubicle varchar(5) NOT NULL,
 PRIMARY KEY (empid)
-);
+); 
 
 INSERT INTO Employee
 VALUES (1, 'John', 'Bain', 'jbain@dell.com', '01A');
