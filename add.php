@@ -12,7 +12,7 @@ function options($flag)
 
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT empid, fname, lname FROM  Employee";
+		$query = "SELECT * FROM  Employee";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -40,7 +40,7 @@ function options($flag)
 
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT family, model FROM Processor";
+		$query = "SELECT * FROM Processor";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -64,7 +64,7 @@ function options($flag)
 	{
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT memid, capacity, frequency FROM Memory";
+		$query = "SELECT * FROM Memory";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -80,13 +80,13 @@ function options($flag)
 	{
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT model FROM Expansioncard";
+		$query = "SELECT * FROM Expansioncard";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    echo ('<option value="' . $row[0] . '">' . $row[0] . '</option>');
+		    echo ('<option value="' . $row["model"] . '">' . $row["model"] . 'MAH NIGGA' . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
