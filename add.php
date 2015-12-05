@@ -110,15 +110,14 @@ function options($flag)
 					$mids[$i] = $item;
 					$j++;
 				}
-				elseif($j = 1)
+				elseif($j == 1)
 				{
-					$ms[$i] = $item . " MHz";
+					$ms[$i] = $item . "MHz";
 					$j++;
 				}
 				elseif($j == 2)
 				{
-					$s = $item . " GB - " . $ms[$i];
-					$ms[$i] = $s;
+					$ms[$i] = $item . "GB - " . $ms[$i];
 					break 1;
 				}
 			}
@@ -210,7 +209,11 @@ function options($flag)
 						<?php options("c"); ?>
 					</select>
 				<br/><br/>
-				Location: <input type="text" name="locid">
+				Building: <input type="text" name="building">
+				<br/><br/>
+				Rack: <input type="text" name="rack">
+				<br/><br/>
+				Top Unit: <input type="text" name="topUnit">
 				<br/><br/>
 				Type: <input type="text" name="typid">
 				<br/><br/>
