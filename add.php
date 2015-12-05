@@ -15,9 +15,29 @@ function options($flag)
 		$query = "SELECT * FROM  Employee";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
-		$i = 0;
+		$j = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
+			$i = 0;
+			foreach($row as $item)
+			{
+				if($i == 0)
+				{
+					$employeeids[$j] = $item;
+					$i = $i + 1;
+				}
+				elseif($i == 1)
+				{
+					$employees[$j] = $item . " ";
+					$i = $i + 1;
+				}
+				elseif($i = 2)
+				{
+					$employees[$j] = $employees[$j] . $item;
+					break;
+				}
+			}
+
 		    $employees[$i] = $row['fname'] . " " . $row['lname'];
 		    $employeeids[$i] = $row['empid'];
 		    $i = $i + 1;
