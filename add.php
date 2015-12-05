@@ -209,13 +209,22 @@ function options($flag)
 						<?php options("c"); ?>
 					</select>
 				<br/><br/>
-				Building: <input type="text" name="building">
+				Building:
+					<select name="building">
+						<option value="7615">7615</option>
+						<option value="7616">7616</option>
+					</select>
 				<br/><br/>
 				Rack: <input type="text" name="rack">
 				<br/><br/>
 				Top Unit: <input type="text" name="topUnit">
 				<br/><br/>
-				Type: <input type="text" name="typid">
+				Type:
+					<select name="typid">
+						<option value="Server">Server</option>
+						<option value="Enclosure">Enclosure</option>
+						<option value="Server">Server</option>
+					</select>
 				<br/><br/>
 				<input type="submit">
 			</form>

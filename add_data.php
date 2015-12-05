@@ -15,4 +15,9 @@
 	oci_free_statement($stid);	
 	oci_close($conn);
 
+	foreach($_POST as $row)
+	{
+		echo $row . "<br/>";
+	}
+
 ?>
