@@ -12,7 +12,7 @@ function options($flag)
 
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT * FROM  Employee";
+		$query = "SELECT empid, fname, lname FROM  Employee";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$j = 0;
@@ -34,7 +34,6 @@ function options($flag)
 				elseif($i = 2)
 				{
 					$employees[$j] = $employees[$j] . $item;
-					break;
 				}
 			}
 
