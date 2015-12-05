@@ -30,7 +30,7 @@ function options($flag)
 		for($a = 0; $a < $elength; $a++)
 		{
 			//Something wrong with echo statements.
-			echo ('<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>');
+			echo ('<option value="' . $employeeids[$a] . '">' . $employees[$a] . "OOGA BOOGA" . '</option>');
 		}
 	}
 	/*else if($flag == "p")
@@ -60,11 +60,8 @@ function options($flag)
 			echo ('<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>');
 		}
 	}*/
-	/*else if($flag == "m")
+	else if($flag == "m")
 	{
-		$rams = array();
-		$ramids = array();
-
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 		$query = "SELECT memid, capacity, frequency FROM Memory";
@@ -73,23 +70,15 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $rams[$i] = $row['capacity'] . "GB - " . $row['frequency'] . "Mhz";
-		    $ramids[$i] = $row['memid'];
-		    $i = $i + 1;
+			echo ('<option value="' . $row['memid'] . '">' . ($row['capacity'] . "GB - " . $row['frequency'] . "Mhz") . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
 
-
-		$rlength = count($rams);
-		for($a = 0; $a < $rlength; $a++)
-		{
-			echo ('<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>');
-		}
-	}*/
+	}
 	else if($flag == "c")
 	{
-		
+
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 		$query = "SELECT model FROM Expansioncard";
 		$stid = oci_parse($conn,$query);
@@ -97,7 +86,7 @@ function options($flag)
 
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    echo ('<option value="' . $row['model'] . '">' . $row['model'] . '</option>');
+		    echo ('<option value="' . $row . '">' . $row . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
