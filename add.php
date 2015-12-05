@@ -34,12 +34,10 @@ function options($flag)
 				elseif($i = 2)
 				{
 					$employees[$j] = $employees[$j] . $item;
+					break 1;
 				}
 			}
 
-		    $employees[$i] = $row['fname'] . " " . $row['lname'];
-		    $employeeids[$i] = $row['empid'];
-		    $j = $j + 1;
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
