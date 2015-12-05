@@ -30,7 +30,7 @@ function options($flag)
 		for($a = 0; $a < $elength; $a++)
 		{
 			//Something wrong with echo statements.
-			echo '<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>';
+			echo ('<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>');
 		}
 	}
 	else if($flag == "p")
@@ -57,7 +57,7 @@ function options($flag)
 		$clength = count($cpus);
 		for($a = 0; $a < $clength; $a++)
 		{
-			echo '<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>';
+			echo ('<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>');
 		}
 	}
 	else if($flag == "m")
@@ -84,7 +84,7 @@ function options($flag)
 		$rlength = count($rams);
 		for($a = 0; $a < $clength; $a++)
 		{
-			echo '<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>';
+			echo ('<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>');
 		}
 	}
 	else if($flag == "c")
@@ -108,7 +108,7 @@ function options($flag)
 
 		foreach($cards as $car)
 		{
-			echo '<option value="' . $car . '">' . $car . '</option>';
+			echo ('<option value="' . $car . '">' . $car . '</option>');
 		}
 	}
 	else
