@@ -112,13 +112,13 @@ function options($flag)
 				}
 				elseif($j = 1)
 				{
-					$ms[$i] = " GB - " . $item . " MHz";
+					$ms[$i] = $item . " MHz";
 					$j++;
 				}
 				elseif($j == 2)
 				{
 					$s = $ms[$i];
-					$ms[$i] = $item . $s;
+					$ms[$i] = $item . " GB - " . $s;
 					j++;
 				}
 			}
