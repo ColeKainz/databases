@@ -15,30 +15,31 @@ function options($flag)
 		$query = "SELECT * FROM  Employee";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
-		$j = 0;
+		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-			$i = 0;
+			$j = 0;
 			foreach($row as $item)
 			{
-				if($i == 0)
+				if($j == 0)
 				{
-					$employeeids[$j] = $item;
-					$i = $i + 1;
+					$employeeids[$i] = $item;
+					$j = $j + 1;
 				}
-				elseif($i == 1)
+				elseif($j == 1)
 				{
-					$employees[$j] = $item . " ";
-					$i = $i + 1;
+					$employees[$i] = $item . " ";
+					$j = $j + 1;
 				}
-				elseif($i = 2)
+				elseif($j = 2)
 				{
-					$employees[$j] = $employees[$j] . $item;
+					$employees[$i] = $employees[$i] . $item;
 					break 1;
 				}
 			}
-
+			$i = $i + 1;
 		}
+
 		oci_free_statement($stid);
 		oci_close($conn);
 
@@ -87,6 +88,11 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
+			$j = 0;
+			foreach($row as $item)
+			{
+
+			}
 			echo ('<option value="' . $row[0] . '">' . $row[2] . "GB - " . $row[1] . "Mhz" . '</option>');
 		}
 		oci_free_statement($stid);
