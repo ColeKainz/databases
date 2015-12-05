@@ -45,7 +45,7 @@ function options($flag)
 		$elength = count($es);
 		for($a = 0; $a < $elength; $a++)
 		{
-			echo ('<option value="' . $eids[$a] . '">' . $es[$a] . "OOGA BOOGA" . '</option>');
+			echo ('<option value="' . $eids[$a] . '">' . $es[$a] . '</option>');
 		}
 
 	}
@@ -87,7 +87,7 @@ function options($flag)
 		$plength = count($ps);
 		for($a = 0; $a < $plength; $a++)
 		{
-			echo ('<option value="' . $pids[$a] . '">' . $ps[$a] . "OOGA BOOGA" . '</option>');
+			echo ('<option value="' . $pids[$a] . '">' . $ps[$a] . '</option>');
 		}
 	}
 	else if($flag == "m")
@@ -96,7 +96,7 @@ function options($flag)
 		$mids = array();
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT memid, capacity, frequency FROM Memory";
+		$query = "SELECT memid, frequency, capacity FROM Memory";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -110,14 +110,14 @@ function options($flag)
 					$mids[$i] = $item;
 					$j++;
 				}
-				elseif($j = 1)
+				elseif($j == 1)
 				{
-					$ms[$i] = " GB - " . $item . " MHz";
+					$ms[$i] = $item . "MHz";
 					$j++;
 				}
 				elseif($j == 2)
 				{
-					$ms[$i] = $item . $ms[$i];
+					$ms[$i] = $item . "GB - " . $ms[$i];
 					break 1;
 				}
 			}
@@ -146,7 +146,7 @@ function options($flag)
 		{
 			foreach($row as $item)
 			{
-				echo ('<option value="' . $item . '">' . $item . 'MAH NIGGA' . '</option>');
+				echo ('<option value="' . $item . '">' . $item . '</option>');
 			}
 		}
 		oci_free_statement($stid);
@@ -180,7 +180,7 @@ function options($flag)
 			<div id="nav-bar">
 				<ul>
 				  <li><a href="search.html">Search</a></li>
-				  <li><a href="add.html">Add</a></li>
+				  <li><a href="add.php">Add</a></li>
 				</ul> 
 			</div>
 
@@ -209,9 +209,22 @@ function options($flag)
 						<?php options("c"); ?>
 					</select>
 				<br/><br/>
-				Location: <input type="text" name="locid">
+				Building:
+					<select name="building">
+						<option value="7615">7615</option>
+						<option value="7625">7625</option>
+					</select>
 				<br/><br/>
-				Type: <input type="text" name="typid">
+				Rack: <input type="text" name="rack">
+				<br/><br/>
+				Top Unit: <input type="text" name="topUnit">
+				<br/><br/>
+				Type:
+					<select name="typid">
+						<option value="Server">Server</option>
+						<option value="Enclosure">Enclosure</option>
+						<option value="Switch">Switch</option>
+					</select>
 				<br/><br/>
 				<input type="submit">
 			</form>
