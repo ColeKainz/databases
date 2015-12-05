@@ -15,7 +15,7 @@
 		<div id="nav-bar">
 			<ul>
 			  <li><a href="search.html">Surch</a></li>
-			  <li><a href="add.html">Ad</a></li>
+			  <li><a href="add.php">Ad</a></li>
 			</ul> 
 		</div>
 		<br/>
@@ -41,7 +41,7 @@
 	}
 	$devices_service = $_POST['devices_service'];
 	if($devices_service != ""){
-		$where = $where . 'device.service=\'' . $devices_service . '\',';
+		$where = $where . 'device.devid=\'' . $devices_service . '\',';
 		if(!$from_device) {
 			$from = $from . 'device,';
 			$from_device = true;
@@ -49,7 +49,7 @@
 	}
 	$devices_typid = $_POST['devices_typid'];
 	if($devices_typid != ""){
-		$where = $where . 'devices.typid=\'' . $devices_typid . '\',';
+		$where = $where . 'device.typid=\'' . $devices_typid . '\',';
 		if(!$from_device) {
 			$from = $from . 'device,';
 			$from_device = true;
@@ -111,7 +111,7 @@
 	}
 	$processors_frequency = $_POST['processors_frequency'];
 	if($processors_frequency != ""){
-		$where = $where . 'processors.frequency=\'' . $processors_frequency . '\',';
+		$where = $where . 'processor.frequency=\'' . $processors_frequency . '\',';
 		    if(!$from_processor) {
 			$from = $from . 'processor,';
 			$from_processor = true;
@@ -119,7 +119,7 @@
 	}
 	$processors_corecount = $_POST['processors_corecount'];
 	if($processors_corecount != ""){
-		$where = $where . 'processors.corecount=\'' . $processors_corecount . '\',';
+		$where = $where . 'processor.corecount=\'' . $processors_corecount . '\',';
 		    if(!$from_processor) {
 			$from = $from . 'processor,';
 			$from_processor = true;
@@ -127,7 +127,7 @@
 	}
 	$processors_threadcount = $_POST['processors_threadcount'];
 	if($processors_threadcount != ""){
-		$where = $where . 'processors.threadcount=\'' . $processors_threadcount . '\',';
+		$where = $where . 'processor.threadcount=\'' . $processors_threadcount . '\',';
 		    if(!$from_processor) {
 			$from = $from . 'processor,';
 			$from_processor = true;
@@ -139,16 +139,16 @@
 	    foreach($_POST['cards_check'] as $check) {
 		    $select = $select . $check . ','; 
 		    if(!$from_card) {
-			$from = $from . 'card,';
+			$from = $from . 'expansioncard,';
 			$from_card = true;
 		    }
 	    }
 	}
 	$cards_type = $_POST['cards_type'];
 	if($cards_type != ""){
-		$where = $where . 'cards.type=\'' . $cards_type . '\',';
+		$where = $where . 'expansioncard.model=\'' . $cards_type . '\',';
 		    if(!$from_card) {
-			$from = $from . 'card,';
+			$from = $from . 'expansioncard,';
 			$from_card = true;
 		    }
 	}
@@ -165,7 +165,7 @@
 	}
 	$employees_email = $_POST['employees_email'];
 	if($employees_email != ""){
-		$where = $where . 'employees.email=\'' . $employees_email . '\',';
+		$where = $where . 'employee.email=\'' . $employees_email . '\',';
 		    if(!$from_employee) {
 			$from = $from . 'employee,';
 			$from_employee = true;
@@ -184,7 +184,7 @@
 	}
 	$locations_building = $_POST['locations_building'];
 	if($locations_building != ""){
-		$where = $where . 'locations.building=\'' . $locations_building . '\',';
+		$where = $where . 'location.building=\'' . $locations_building . '\',';
 		    if(!$from_location) {
 			$from = $from . 'location,';
 			$from_location = true;
@@ -192,7 +192,7 @@
 	}
 	$locations_rack = $_POST['locations_rack'];
 	if($locations_rack != ""){
-		$where = $where . 'locations.rack=\'' . $locations_rack . '\',';
+		$where = $where . 'location.rack=\'' . $locations_rack . '\',';
 		    if(!$from_location) {
 			$from = $from . 'location,';
 			$from_location = true;
@@ -200,7 +200,7 @@
 	}
 	$locations_unit = $_POST['locations_unit'];
 	if($locations_unit != ""){
-		$where = $where . 'locations.unit=\'' . $locations_unit . '\',';
+		$where = $where . 'location.topu=\'' . $locations_unit . '\',';
 		    if(!$from_location) {
 			$from = $from . 'location,';
 			$from_location = true;
@@ -208,7 +208,7 @@
 	}
 	$locations_form = $_POST['locations_form'];
 	if($locations_form != ""){
-		$where = $where . 'locations.form=\'' . $locations_form . '\',';
+		$where = $where . 'location.form=\'' . $locations_form . '\',';
 		    if(!$from_location) {
 			$from = $from . 'location,';
 			$from_location = true;
@@ -242,4 +242,3 @@
 		</table>
 	</body>
 </html>
-
