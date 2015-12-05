@@ -18,8 +18,8 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $employees[$i] = $row[1] . " " . $row[2];
-		    $employeeids[$i] = $row[0];
+		    $employees[$i] = $row['fname'] . " " . $row['lname'];
+		    $employeeids[$i] = $row['empid'];
 		    $i = $i + 1;
 		}
 		oci_free_statement($stid);
@@ -46,8 +46,8 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $cpus[$i] = $row[0];
-		    $cpuids[$i] = $row[1];
+		    $cpus[$i] = $row['model'];
+		    $cpuids[$i] = $row['family'];
 		    $i = $i + 1;
 		}
 		oci_free_statement($stid);
@@ -73,8 +73,8 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $rams[$i] = $row[1] . "GB - " . $row[2] . "Mhz";
-		    $ramids[$i] = $row[0];
+		    $rams[$i] = $row['capacity'] . "GB - " . $row['frequency'] . "Mhz";
+		    $ramids[$i] = $row['memid'];
 		    $i = $i + 1;
 		}
 		oci_free_statement($stid);
