@@ -119,7 +119,7 @@ function options($flag)
 				{
 					$s = $ms[$i];
 					$ms[$i] = $item . " GB - " . $s;
-					j++;
+					break 1;
 				}
 			}
 			$i++;
