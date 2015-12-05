@@ -25,6 +25,8 @@
 	oci_execute($stid,OCI_COMMIT_ON_SUCCESS);
 	oci_free_statement($stid);	
 	oci_close($conn);
+
+	
 	echo "You have successfully added a device! Redirecting in five seconds.";
 	header("refresh:5;url=add.php");
 
