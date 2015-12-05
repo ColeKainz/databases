@@ -33,7 +33,7 @@ function options($flag)
 			echo ('<option value="' . $employeeids[$a] . '">' . $employees[$a] . "OOGA BOOGA" . '</option>');
 		}
 	}
-	/*else if($flag == "p")
+	else if($flag == "p")
 	{
 		$cpus = array();
 		$cpuids = array();
@@ -59,7 +59,7 @@ function options($flag)
 		{
 			echo ('<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>');
 		}
-	}*/
+	}
 	else if($flag == "m")
 	{
 
@@ -70,7 +70,7 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-			echo ('<option value="' . $row['memid'] . '">' . ($row['capacity'] . "GB - " . $row['frequency'] . "Mhz") . '</option>');
+			echo ('<option value="' . $row['memid'] . '">' . $row['capacity'] . "GB - " . $row['frequency'] . "Mhz" . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
@@ -86,7 +86,7 @@ function options($flag)
 
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    echo ('<option value="' . $row . '">' . $row . '</option>');
+		    echo ('<option value="' . $row[0] . '">' . $row[0] . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
