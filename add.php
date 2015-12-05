@@ -212,7 +212,7 @@ function options($flag)
 				Building:
 					<select name="building">
 						<option value="7615">7615</option>
-						<option value="7616">7616</option>
+						<option value="7625">7625</option>
 					</select>
 				<br/><br/>
 				Rack: <input type="text" name="rack">
@@ -223,7 +223,7 @@ function options($flag)
 					<select name="typid">
 						<option value="Server">Server</option>
 						<option value="Enclosure">Enclosure</option>
-						<option value="Server">Server</option>
+						<option value="Switch">Switch</option>
 					</select>
 				<br/><br/>
 				<input type="submit">
