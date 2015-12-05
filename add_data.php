@@ -21,8 +21,8 @@
 	<body>
 		<div id="nav-bar">
 			<ul>
-			  <li><a href="search.html">Surch</a></li>
-			  <li><a href="add.html">Ad</a></li>
+			  <li><a href="search.html">Search</a></li>
+			  <li><a href="add.php">Add</a></li>
 			</ul> 
 		</div>
 			<?php
@@ -52,7 +52,7 @@
 				oci_close($conn);
 
 
-				echo "You have just entered:"
+				echo "You have just entered:";
 
 				$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 				$query = 'SELECT * FROM Device WHERE devid = ' . $_POST['devid'] . ');';
