@@ -46,8 +46,8 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $cpus[$i] = $row['model'];
-		    $cpuids[$i] = $row['family'];
+		    $cpus[$i] = $row['1'];
+		    $cpuids[$i] = $row['0'];
 		    $i = $i + 1;
 		}
 		oci_free_statement($stid);
@@ -70,7 +70,7 @@ function options($flag)
 		$i = 0;
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-			echo ('<option value="' . $row['memid'] . '">' . $row['capacity'] . "GB - " . $row['frequency'] . "Mhz" . '</option>');
+			echo ('<option value="' . $row[0] . '">' . $row[2] . "GB - " . $row[1] . "Mhz" . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
@@ -86,7 +86,8 @@ function options($flag)
 
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    echo ('<option value="' . $row["model"] . '">' . $row["model"] . 'MAH NIGGA' . '</option>');
+			$thing = $row['model'];
+		    echo ('<option value="' . $row['model'] . '">' . $thing . 'MAH NIGGA' . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
