@@ -45,7 +45,7 @@ function options($flag)
 		$elength = count($es);
 		for($a = 0; $a < $elength; $a++)
 		{
-			echo ('<option value="' . $eids[$a] . '">' . $es[$a] . "OOGA BOOGA" . '</option>');
+			echo ('<option value="' . $eids[$a] . '">' . $es[$a] . '</option>');
 		}
 
 	}
@@ -87,7 +87,7 @@ function options($flag)
 		$plength = count($ps);
 		for($a = 0; $a < $plength; $a++)
 		{
-			echo ('<option value="' . $pids[$a] . '">' . $ps[$a] . "OOGA BOOGA" . '</option>');
+			echo ('<option value="' . $pids[$a] . '">' . $ps[$a] . '</option>');
 		}
 	}
 	else if($flag == "m")
@@ -96,7 +96,7 @@ function options($flag)
 		$mids = array();
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT memid, capacity, frequency FROM Memory";
+		$query = "SELECT * FROM Memory";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -117,8 +117,9 @@ function options($flag)
 				}
 				elseif($j == 2)
 				{
-					$ms[$i] = $item . $ms[$i];
-					break 1;
+					$s = $ms[$i]
+					$ms[$i] = $item . $s;
+					j++;
 				}
 			}
 			$i++;
@@ -146,7 +147,7 @@ function options($flag)
 		{
 			foreach($row as $item)
 			{
-				echo ('<option value="' . $item . '">' . $item . 'MAH NIGGA' . '</option>');
+				echo ('<option value="' . $item . '">' . $item . '</option>');
 			}
 		}
 		oci_free_statement($stid);
