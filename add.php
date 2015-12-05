@@ -24,12 +24,12 @@ function options($flag)
 				if($j == 0)
 				{
 					$eids[$i] = $item;
-					$j = $j + 1;
+					$j++;
 				}
 				elseif($j == 1)
 				{
 					$es[$i] = $item . " ";
-					$j = $j + 1;
+					$j++;
 				}
 				elseif($j = 2)
 				{
@@ -45,7 +45,6 @@ function options($flag)
 		$elength = count($es);
 		for($a = 0; $a < $elength; $a++)
 		{
-			//Something wrong with echo statements.
 			echo ('<option value="' . $eids[$a] . '">' . $es[$a] . "OOGA BOOGA" . '</option>');
 		}
 
@@ -57,7 +56,7 @@ function options($flag)
 
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT * FROM  Processor";
+		$query = "SELECT model, family FROM  Processor";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -69,20 +68,16 @@ function options($flag)
 				if($j == 0)
 				{
 					$pids[$i] = $item;
-					$j = $j + 1;
+					$ps[$i] = $item . " - ";
+					$j++;
 				}
-				elseif($j == 1)
-				{
-					$ps[$i] = $item . " ";
-					$j = $j + 1;
-				}
-				elseif($j = 2)
+				elseif($j = 1)
 				{
 					$ps[$i] = $ps[$i] . $item;
 					break 1;
 				}
 			}
-			$i = $i + 1;
+			$i++;
 		}
 
 		oci_free_statement($stid);
@@ -92,15 +87,16 @@ function options($flag)
 		$plength = count($ps);
 		for($a = 0; $a < $plength; $a++)
 		{
-			//Something wrong with echo statements.
 			echo ('<option value="' . $pids[$a] . '">' . $ps[$a] . "OOGA BOOGA" . '</option>');
 		}
 	}
 	else if($flag == "m")
 	{
+		$ms = array();
+		$mids = array();
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT * FROM Memory";
+		$query = "SELECT memid, capacity, frequency FROM Memory";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -109,10 +105,31 @@ function options($flag)
 			$j = 0;
 			foreach($row as $item)
 			{
-
+				if($j == 0)
+				{
+					$mids[$i] = $item;
+					$j++;
+				}
+				elseif($j = 1)
+				{
+					$ms[$i] = $item . " GB - ";
+					$j++;
+				}
+				elseif($j == 2)
+				{
+					$ms[$i] = $ms[$i] . $item . " MHz";
+					break 1;
+				}
 			}
-			echo ('<option value="' . $row[0] . '">' . $row[2] . "GB - " . $row[1] . "Mhz" . '</option>');
+			$i++;
 		}
+		$mlength = count($ms);
+		for($a = 0; $a < $mlength; $a++)
+		{
+			echo ('<option value="' . $mids[$a] . '">' . $ms[$a] . '</option>');
+		}
+			
+
 		oci_free_statement($stid);
 		oci_close($conn);
 
@@ -127,8 +144,10 @@ function options($flag)
 
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-			$thing = $row['model'];
-		    echo ('<option value="' . $row['model'] . '">' . $thing . 'MAH NIGGA' . '</option>');
+			foreach($row as $item)
+			{
+				echo ('<option value="' . $item . '">' . $item . 'MAH NIGGA' . '</option>');
+			}
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
