@@ -96,7 +96,7 @@ function options($flag)
 		$mids = array();
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT * FROM Memory";
+		$query = "SELECT memid, frequency, capacity FROM Memory";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 		$i = 0;
@@ -117,8 +117,8 @@ function options($flag)
 				}
 				elseif($j == 2)
 				{
-					$s = $ms[$i];
-					$ms[$i] = $item . " GB - " . $s;
+					$s = $item . " GB - " . $ms[$i];
+					$ms[$i] = $s;
 					break 1;
 				}
 			}
