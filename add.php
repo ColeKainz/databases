@@ -68,12 +68,12 @@ function options($flag)
 				if($j == 0)
 				{
 					$pids[$i] = $item;
-					$ps[$i] = $item . " - ";
+					$ps[$i] = " - " . $item;
 					$j++;
 				}
 				elseif($j = 1)
 				{
-					$ps[$i] = $ps[$i] . $item;
+					$ps[$i] = $item . $ps[$i];
 					break 1;
 				}
 			}
@@ -112,12 +112,12 @@ function options($flag)
 				}
 				elseif($j = 1)
 				{
-					$ms[$i] = $item . " GB - ";
+					$ms[$i] = " GB - " . $item . " MHz";
 					$j++;
 				}
 				elseif($j == 2)
 				{
-					$ms[$i] = $ms[$i] . $item . " MHz";
+					$ms[$i] = $item . $ms[$i];
 					break 1;
 				}
 			}
@@ -138,7 +138,7 @@ function options($flag)
 	{
 
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
-		$query = "SELECT * FROM Expansioncard";
+		$query = "SELECT model FROM Expansioncard";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 
