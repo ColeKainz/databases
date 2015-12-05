@@ -82,7 +82,7 @@ function options($flag)
 
 
 		$rlength = count($rams);
-		for($a = 0; $a < $clength; $a++)
+		for($a = 0; $a < $rlength; $a++)
 		{
 			echo ('<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>');
 		}
@@ -96,11 +96,10 @@ function options($flag)
 		$query = "SELECT model FROM Expansioncard";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
-		$i = 0;
+
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $cards[$i] = $row[0];
-		    $i = $i + 1;
+		    $cards = $row;
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
