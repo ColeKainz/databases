@@ -117,7 +117,7 @@ function options($flag)
 				}
 				elseif($j == 2)
 				{
-					$s = $ms[$i]
+					$s = $ms[$i];
 					$ms[$i] = $item . $s;
 					j++;
 				}
