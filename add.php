@@ -33,7 +33,7 @@ function options($flag)
 			echo ('<option value="' . $employeeids[$a] . '">' . $employees[$a] . '</option>');
 		}
 	}
-	else if($flag == "p")
+	/*else if($flag == "p")
 	{
 		$cpus = array();
 		$cpuids = array();
@@ -59,8 +59,8 @@ function options($flag)
 		{
 			echo ('<option value="' . $cpuids[$a] . '">' . $cpuids[$a] . ' - ' . $cpus[$a] . '</option>');
 		}
-	}
-	else if($flag == "m")
+	}*/
+	/*else if($flag == "m")
 	{
 		$rams = array();
 		$ramids = array();
@@ -86,31 +86,22 @@ function options($flag)
 		{
 			echo ('<option value="' . $ramids[$a] . '">' . $rams[$a] . '</option>');
 		}
-	}
+	}*/
 	else if($flag == "c")
 	{
-		$cards = array();
-
-
+		
 		$conn = oci_connect('swam', 'sa7y7awv', '(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(Host=db1.chpc.ndsu.nodak.edu)(Port=1521)))(CONNECT_DATA=(SID=cs)))');
 		$query = "SELECT model FROM Expansioncard";
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 
-		$i = 0
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $cards[$i] = $row['model'];
-		    $i = $i + 1
+		    echo ('<option value="' . $row['model'] . '">' . $row['model'] . '</option>');
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
 
-
-		foreach($cards as $car)
-		{
-			echo ('<option value="' . $car . '">' . $car . '</option>');
-		}
 	}
 	else
 	{
