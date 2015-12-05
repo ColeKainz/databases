@@ -14,7 +14,7 @@
 		   on the page as plain HTML. After tabber runs, the class is changed
 		   to "tabberlive" and it will appear. */
 
-		document.write('<style type="text/css">.tabber{display:none;}<\/style>');
+		document.write('<style type="text/css">.tabber{display:none;}</style>');
 		</script>
 	</head>
 
