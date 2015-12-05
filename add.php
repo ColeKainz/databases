@@ -97,9 +97,11 @@ function options($flag)
 		$stid = oci_parse($conn,$query);
 		oci_execute($stid,OCI_DEFAULT);
 
+		$i = 0
 		while ($row = oci_fetch_array($stid,OCI_ASSOC)) 
 		{
-		    $cards = $row;
+		    $cards[$i] = $row['model'];
+		    $i = $i + 1
 		}
 		oci_free_statement($stid);
 		oci_close($conn);
@@ -150,7 +152,7 @@ function options($flag)
 					<select name="Employees">
 						<?php options("e"); ?>
 					</select>
-				<br/><br/
+				<br/><br/>
 				Processor:
 					<select name="Processors">
 						<?php options("p"); ?>
