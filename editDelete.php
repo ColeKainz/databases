@@ -171,12 +171,9 @@
 							{
 							   echo '<tr><form method="POST" action="editDelete_select.php">';
 							   echo '<input type="hidden" name="table" value="Location">';
-							   echo '<td><input type="text" name="key" value="' . 							   array_shift($row) . '" readonly></td>';
-
-;							   foreach ($row as $item) 
-							   {
-							      echo '<td>' . $item . '</td>'; 
-							   }
+							   echo '<td>' . array_shift($row) . '</td>'; 
+							   echo '<td><input type="text" name="rack" value="' . array_shift($row) . '" readonly></td>';
+							   echo '<td><input type="text" name="topu" value="' . array_shift($row) . '" readonly></td>';
 							   echo '<td><input type="submit" name="action" value="Edit"></td>';
 							   echo '<td><input type="submit" name="action" value="Delete"></td>';
 							   echo '</form></tr>';
